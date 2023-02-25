@@ -36,6 +36,7 @@ const Home = memo(() => {
           }
         </ul>
       </div>
+      
     </HomeWrapper>
   )
 })
