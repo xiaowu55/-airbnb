@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
 export const BannerWrapper = styled.div`
-  //  background:url('@/assets/img/cover_01.jpeg')
-
+  height: 529px;
+  background: url(${require("@/assets/img/cover_01.jpeg")}) center/cover;
 `

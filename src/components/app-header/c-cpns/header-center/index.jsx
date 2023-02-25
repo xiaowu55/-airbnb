@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import IconSearchBae from '../../../../assets/svg/icon_search_bar'
+import IconSearchBae from '@/assets/svg/icon-search-bar'
 import { CenterWrap } from './style'
 
 const HeaderCenter = memo(() => {
