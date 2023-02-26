@@ -5,35 +5,54 @@ import { fetchHomeDataAction } from '@/store/modules/home'
 import HomeSectionV1 from './c-cpns/home-section-v1'
 import { HomeWrapper } from './style'
 import HomeBanner from './c-cpns/home-banner'
-import SectionHeader from '@/components/section-header'
+
+import HomeSectionV2 from './c-cpns/home-section-v2'
+import { isEmptyOb } from '../../utils'
+import HomeLongfor from './c-cpns/home-longfor'
 
 
 const Home = memo(() => {
-  const {goodPriceInfo,highScoreInfo,discountInfo} = useSelector((state)=>({
+  const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo,longforInfo} = useSelector((state)=>({
     goodPriceInfo:state.home.goodPriceInfo,
     highScoreInfo:state.home.highScoreInfo,
-    discountInfo:state.home.homeDiscount
+    discountInfo:state.home.homeDiscount,
+    recommendInfo:state.home.recommendInfo,
+    longforInfo:state.home.longforInfo
   }),shallowEqual)
 
 
 
   const dispatch = useDispatch()
 
+
+ 
+
   useEffect(() => { 
     dispatch(fetchHomeDataAction())
    },[dispatch])
+
+
 
   
   return (
     <HomeWrapper>
       <HomeBanner/>
       <div className="content">
-        <div className="discount">
+        {/* <div className="discount">
           <SectionHeader title={discountInfo.title} subtitle={discountInfo.subtitle}/>
-          
-        </div>
-      <HomeSectionV1 infoData={goodPriceInfo}/> 
-      <HomeSectionV1 infoData={highScoreInfo}/> 
+          <SectionTabs tabNames={tabNames} tabClick={tabClickHandle}/>
+          <SectionRooms roomList={discountInfo.dest_list?.[name]}  itemWidth='33.3333%'/>
+        </div> */}
+
+      {isEmptyOb(longforInfo) && <HomeLongfor infoData={longforInfo}/>}
+      
+      {isEmptyOb(discountInfo) && <HomeSectionV2 infoData={discountInfo}/>}
+      {isEmptyOb(recommendInfo) && <HomeSectionV2 infoData={recommendInfo}/>}
+
+     
+
+      {isEmptyOb(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo}/> }
+      {isEmptyOb(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo}/> }
       </div>
 
 

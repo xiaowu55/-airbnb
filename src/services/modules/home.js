@@ -19,3 +19,16 @@ export function getHomeDiscountData(){
         url:'/home/discount'
     })
 }
+
+export function getHomeHotRecommandData(){
+    return hyRequest.get({
+        url:'/home/hotrecommenddest'
+    })
+}
+
+
+export function getHomeLongforData(){
+    return hyRequest.get({
+        url:'/home/longfor'
+    })
+}

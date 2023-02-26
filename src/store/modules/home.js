@@ -1,5 +1,5 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
-import { getHomeDiscountData, getHomeGoodPriceData,getHomeHighScoreData } from "../../services";
+import { getHomeDiscountData, getHomeGoodPriceData,getHomeHighScoreData, getHomeHotRecommandData, getHomeLongforData } from "../../services";
 
 export const fetchHomeDataAction = createAsyncThunk('fetchdata', (payload,{dispatch}) => { 
     getHomeGoodPriceData().then(res=>{
@@ -14,7 +14,17 @@ export const fetchHomeDataAction = createAsyncThunk('fetchdata', (payload,{dispa
     getHomeDiscountData().then(res=>{
         dispatch(changeHomeDiscountInfoAction(res))
     })
+
+    getHomeHotRecommandData().then(res=>{
+        dispatch(changeRecommendInfoAction(res))
+    })
+
+    getHomeLongforData().then(res=>{
+        dispatch(changeLongforInfoAction(res))
+    })
+
  })
+
 
 const homeSlice = createSlice({
     name:'home',
@@ -22,6 +32,8 @@ const homeSlice = createSlice({
         goodPriceInfo:{},
         highScoreInfo:{},
         homeDiscount:{},
+        recommendInfo:{},
+        longforInfo:{}
     },
     reducers:{
         changeGoodPriceInfoAction(state,{payload}){
@@ -32,7 +44,14 @@ const homeSlice = createSlice({
         },
         changeHomeDiscountInfoAction(state,{payload}){
             state.homeDiscount = payload
+        },
+        changeRecommendInfoAction(state,{payload}){
+            state.recommendInfo = payload
+        },
+        changeLongforInfoAction(state,{payload}){
+            state.longforInfo = payload
         }
+
     },
     extraReducers:{
         // [fetchHomeDataAction.fulfilled](state,{payload}){
@@ -45,7 +64,10 @@ const homeSlice = createSlice({
 
 export const {changeGoodPriceInfoAction,
               changeHighScoreInfoAction,
-              changeHomeDiscountInfoAction} = homeSlice.actions
+              changeHomeDiscountInfoAction,
+              changeRecommendInfoAction,
+              changeLongforInfoAction
+            } = homeSlice.actions
 
 
 export default homeSlice.reducer
