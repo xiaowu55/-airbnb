@@ -9,15 +9,17 @@ import HomeBanner from './c-cpns/home-banner'
 import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isEmptyOb } from '../../utils'
 import HomeLongfor from './c-cpns/home-longfor'
+import HomeSectionV3 from './c-cpns/home-section-v3'
 
 
 const Home = memo(() => {
-  const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo,longforInfo} = useSelector((state)=>({
+  const {goodPriceInfo,highScoreInfo,discountInfo,recommendInfo,longforInfo,plusInfo} = useSelector((state)=>({
     goodPriceInfo:state.home.goodPriceInfo,
     highScoreInfo:state.home.highScoreInfo,
     discountInfo:state.home.homeDiscount,
     recommendInfo:state.home.recommendInfo,
-    longforInfo:state.home.longforInfo
+    longforInfo:state.home.longforInfo,
+    plusInfo:state.home.plusInfo
   }),shallowEqual)
 
 
@@ -53,6 +55,8 @@ const Home = memo(() => {
 
       {isEmptyOb(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo}/> }
       {isEmptyOb(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo}/> }
+
+      {isEmptyOb(plusInfo) && <HomeSectionV3 infoData={plusInfo}/>}
       </div>
 
 
