@@ -6,29 +6,10 @@ export const ItemWrapper = styled.div`
   box-sizing: border-box;
   width: ${props => props.itemWidth};
   padding: 8px;
-
+ 
   .inner {
     width: 100%;
-  }
-
-  .cover {
-    position: relative;
-    box-sizing: border-box;
-    padding: 66.66% 8px 0;
-    border-radius: 3px;
-    overflow: hidden;
-
-    img {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  .slider {
+    .slider {
     position: relative;
     cursor: pointer;
 
@@ -92,6 +73,26 @@ export const ItemWrapper = styled.div`
       }
     }
   }
+  }
+
+  .cover {
+    position: relative;
+    box-sizing: border-box;
+    padding: 66.66% 8px 0;
+    border-radius: 3px;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+ 
 
   .desc {
     margin: 10px 0 5px;
