@@ -10,6 +10,7 @@ import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isEmptyOb } from '../../utils'
 import HomeLongfor from './c-cpns/home-longfor'
 import HomeSectionV3 from './c-cpns/home-section-v3'
+import { changeHeaderConfigAction } from '../../store/modules/main'
 
 
 const Home = memo(() => {
@@ -31,6 +32,7 @@ const Home = memo(() => {
 
   useEffect(() => { 
     dispatch(fetchHomeDataAction())
+    dispatch(changeHeaderConfigAction({isFixed:true,topAlpha:true}))
    },[dispatch])
 
 
